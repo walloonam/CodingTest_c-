@@ -25,11 +25,11 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
             sum[genreCate[genres[i]]].first+=plays[i];
             index[genreCate[genres[i]]].push_back(make_pair(plays[i],i));
         }
-        else {
+        else { //처음 일경우 vector에  push back
             genreCate.insert({ genres[i],count});
             sum.push_back(make_pair(plays[i],genres[i]));
             index.push_back(vector<pair<int, int>>()); // 벡터 크기를 늘립니다.
-            index[count].push_back(make_pair(plays[i], i));
+            index[count].push_back(make_pair(plays[i], i)); //초기 pushback으로 더해준다
             count++;
         }
     }
@@ -38,7 +38,7 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
         sort(index[i].begin(), index[i].end(), compare);
     }
     for (int i = 0; i < sum.size();i++) {
-        if (index[genreCate[sum[i].second]].size()>= 2) {
+        if (index[genreCate[sum[i].second]].size()>= 2) { //1개일 경우 하나만 넣고 2개일 경우 2개를 넣는다
             for (int j = 0; j < 2; j++) {
                 answer.push_back(index[genreCate[sum[i].second]][j].second);
             }

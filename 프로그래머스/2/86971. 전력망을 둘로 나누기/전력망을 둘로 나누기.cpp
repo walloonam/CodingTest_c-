@@ -41,7 +41,8 @@ int solution(int n, vector<vector<int>> wires) {
         for (auto& next_pair : node_pair.second) {
             int key = next_pair.first;
             int value = next_pair.second;
-            answer = min(answer, abs(n - value*2));
+
+            answer = min(answer, abs(n - value - tree[node][key]));
         }
     }
 

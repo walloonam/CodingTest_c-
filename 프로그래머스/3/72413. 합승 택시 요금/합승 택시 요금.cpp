@@ -2,6 +2,7 @@
 #include <vector>
 #include <queue>
 #include <limits>
+#include <iostream>
 
 using namespace std;
 
@@ -17,7 +18,9 @@ void dijkstra(int start, vector<int>& dist) {
     while (!pq.empty()) {
         int cur_node = pq.top().second;
         int cur_dist = pq.top().first;
+        cout << pq.top().second <<" : " <<pq.top().first<<endl;
         pq.pop();
+        
 
         if (dist[cur_node] < cur_dist) continue;
 
